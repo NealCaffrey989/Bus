@@ -1,0 +1,148 @@
+35   40   520  200     
+[0   , 1200, 0   ]                       
+[3600, 3600, 3600]                                                            
+[1130  ,0  , 0   ]     
+[1300, 3600, 3600]                       
+[20  , 0   , 0   ]                                   
+[1700, 0   , 0   ]                                
+[1900, 3600, 3600]                                     
+[20  , 0   , 0   ]                                                              
+[820 , 800 , 500 ]                                                       
+[600 , 600 , 500 ]                                   
+[800 , 750 , 500 ]                     
+[820 , 1200, 600 ]                                             
+[0   , 0   , 0   ]                                             
+[0   , 600 , 0   ]                                           
+[600 , 600 , 600 ]                                         
+[3600, 900 , 3600]                                         
+[0   , 1700, 3600]                                       
+[3600, 3600, 3600]                                        
+[3600, 3600, 3600]                                            
+[300 , 500 , 0   ]                                                 
+[400 , 807 , 0   ]                                                  
+[400 , 800 , 0   ]                                       
+[300 , 400 , 230 ]                                      
+0 0 0      			                                              
+0          				   
+                        
+                        
+                                      
+//数据说明    
+//整班 大单班 单班                        
+3  23                                 
+35   40   520  200     maxJoinup, minSpell, maxSpell, MIN. IDLE in LONG BREAK IN SPLIT DUTY   
+[0   , 1200, 0   ]   1. Start of TimeRange (如果开始于3600，表示不允许该类型)                      
+[3600, 3600, 3600]   2. End of TimeRange                                                           
+[1130  ,0  , 0   ]   3.  午餐开始   EARLIEST START OF MEALBREAK  (3-8 只适用于straight shifts)     
+[1300, 3600, 3600]   4.  午餐结束   LATEST START OF MEALBREAK + minMealbreak                       
+[20  , 0   , 0   ]   5.  最短午餐时间  LENGTH OF MEALBREAK                                         
+[1700, 0   , 0   ]   6.  晚餐开始   EARLIEST FINISH OF MEALBREAK                                   
+[1900, 3600, 3600]   7.  晚餐结束   LATEST FINISH OF MEALBREAK                                     
+[20  , 0   , 0   ]   8.  最短晚餐时间                                                              
+[820 , 800 , 500 ]   9.    最大成本 MAX COST                                                       
+[600 , 600 , 500 ]   10.   最大stretch MAXIMUM STRETCH LENGTH                                      
+[800 , 750 , 500 ]   11    最大驾驶时间 MAXIMUM PLATFORM TIME, max worked time                     
+[820 , 1200, 600 ]   12.   最大跨度 MAXIMUM SPREADOVER                                             
+[0   , 0   , 0   ]   13.   最少应付报酬 MINIMUM PAID DAY                                           
+[0   , 600 , 0   ]   14. 最早签到 EARLIEST SIGNING ON TIME                                         
+[600 , 600 , 600 ]   15. 最早开始运营 EARLIEST START ON VEH                                        
+[3600, 900 , 3600]   16. 最迟开始运营 LATEST START ON VEH                                          
+[0   , 1700, 3600]   17. 最早结束运营 EARLIEST FINISH OFF VEH                                      
+[3600, 3600, 3600]   18. 最迟结束运营 LATEST FINISH OFF VEH                                        
+[3600, 3600, 3600]   19. 最迟签退 LATEST SIGNING OFF TIME                                          
+[300 , 500 , 0   ]   20.   MIN COST (2-spell shift)                                                
+[400 , 807 , 0   ]   21.   MIN COST (3-spell shift)                                                
+[400 , 800 , 0   ]   22.   Min work content (4-spell shifts)                                       
+[300 , 400 , 230 ]   23.   Min PLATFORM TIME (Min worked time)                                     
+0 0 0      				   Passenger Travelling? (1 or 0)                                                
+0          				   HavingAttendedTW (1 or 0)   
+
+
+3 17 
+500 100
+[ 820 , 1200, 400  ]        
+[ 820 , 800 , 400  ]      
+[ 800 , 750 , 400  ] 
+[ 0   ,   0 , 0    ]  
+[ 0   , 300 , 0    ]
+[ 0   , 500 , 0    ]
+[ 0   , 0   , 0    ]
+[ 3600, 900 , 3600 ]        
+[ 3600, 2300, 3600 ]
+[ 1115, 0   , 0    ]
+[ 1300, 3600, 3600 ]
+[ 20  , 0   , 0    ]
+[ 1730, 0   , 0    ]
+[ 1900, 3600, 3600 ]  
+[ 20  , 0   , 0    ]
+[ 100 , 330 , 300  ]
+[ 330 , 330 , 300  ]
+
+上面的数据格式是：hhmm
+第一行：班型数  rule数
+第二行：maxSpell  minSpell
+
+Node:  # of shift types， # of rules          
+【Straight整班   Split大单班   Tripper单班】  
+1 maxSpreadover 最大跨度                      
+2 maxCost       最大成本                      
+3 maxWorkingTime  最大驾驶时间                
+4 minPayDay       最少付报酬                  
+5 minBreakInSplit 大单班最小间隔              
+6 earliestSignOn  大单班最早签到  6:00             
+7 earliestSignOff 大单班最早签退  19:00之后下班            
+8 latestSignOn    大单班最迟签到  9:00 要上早高峰            
+9 latestSignOff   大单班最迟签退  23:00之前下班            
+10 startMealbreak1 午餐开始                   
+11 endMealbreak1   午餐结束                   
+12 minBreak1       最短午餐时间               
+13 startMealbreak2 晚餐开始                   
+14 endMealbreak2   晚餐结束                   
+15 minBreak2       最短晚餐时间               
+16 minCost         最小成本 （soft rule） 
+17 minWorkingTime  最小驾驶时间 （soft rule）                                              
+最长spell，最短spell                          
+                                                            
+                                                            
+
+3 16 
+430 120
+[830 , 1200, 500 ]        
+[800 , 800 , 500 ]      
+[750 , 750 , 500 ] 
+[230 , 230 , 230 ]  
+[0   , 400 , 0   ]
+[0   , 600 , 0   ]
+[0   , 2300, 0   ]
+[3600, 2200, 3600]        
+[3600, 3600, 3600]
+[1100, 0   , 0   ]
+[1400, 3600, 3600]
+[15  , 0   , 0   ]
+[1630, 0   , 0   ]
+[2000, 3600, 3600]  
+[15  , 0   , 0   ]
+[400 , 400 , 300 ]
+
+上面的数据格式是：hhmm
+第一行：班型数  rule数
+第二行：maxSpell  minSpell
+
+Node:  # of shift types (Straight   Split   Tripper ) & # of rules
+1 maxSpreadover 
+2 maxCost       
+3 maxWorkingTime  
+4 minPayDay       0 60 60 60
+5 minBreakInSplit 60 0 60 60
+6 earliestSignOn  60 60 0 60
+7 earliestSignOff 60 60 60 0
+8 latestSignOn    
+9 latestSignOff   
+10 startMealbreak1
+11 endMealbreak1  
+12 minBreak1              
+13 startMealbreak2
+14 endMealbreak2  
+15 minBreak2
+16 minCost (soft rule)
+              
